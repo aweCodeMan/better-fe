@@ -1,0 +1,8 @@
+<ng-container *ngIf="company && address">
+  <h3 class="font-sm font-semibold">{{ company.name}}</h3>
+
+  <div class="text-sm text-gray-600">
+    <app-address [address]="address"></app-address>
+  </div>
+</ng-container>
+

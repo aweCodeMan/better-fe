@@ -1,0 +1,50 @@
+<div class="border rounded shadow p-3 md:p-5">
+  <ng-container *ngIf="doctor" [ngTemplateOutlet]="data"></ng-container>
+  <ng-container *ngIf="!doctor" [ngTemplateOutlet]="shimmer"></ng-container>
+</div>
+
+<!-- This could be extracted to a standalone component -->
+<ng-template #shimmer>
+  <div class="mb-5">
+    <app-shimmer height="1.5rem"></app-shimmer>
+  </div>
+
+  <div class="mb-8">
+    <div class="mb-1">
+      <app-shimmer></app-shimmer>
+    </div>
+    <app-shimmer></app-shimmer>
+  </div>
+
+  <div class="mb-1">
+    <app-shimmer></app-shimmer>
+  </div>
+  <div class="mb-1">
+    <app-shimmer height="1.5rem"></app-shimmer>
+  </div>
+  <div class="mb-1">
+    <app-shimmer></app-shimmer>
+  </div>
+  <app-shimmer></app-shimmer>
+</ng-template>
+
+<ng-template #data>
+  <h2 class="text-gray-800 text-xl font-semibold mb-5">{{ doctor!.name }}</h2>
+
+  <div class="text-sm mb-5">
+    <div class="mb-1">
+      <span class="text-gray-400">Email: </span>
+      <span>{{ doctor!.email }}</span>
+    </div>
+
+    <div>
+      <span class="text-gray-400">Phone: </span>
+      <span>{{ doctor!.phone }}</span>
+    </div>
+  </div>
+
+  <div>
+    <h3 class="text-sm text-gray-400">Clinic:</h3>
+    <app-company [company]="doctor!.company" [address]="doctor!.address"></app-company>
+  </div>
+</ng-template>

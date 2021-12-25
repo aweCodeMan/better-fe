@@ -1,0 +1,26 @@
+<h1 class="text-2xl font-semibold mb-6">Doctors</h1>
+
+<div class="grid">
+  <ng-container *ngFor="let doctor of doctors">
+    <a [routerLink]="['/doctors', doctor.id]" [title]="doctor.name" class="hover:bg-blue-50">
+      <app-doctor-card [doctor]="doctor"></app-doctor-card>
+    </a>
+  </ng-container>
+
+  <ng-container *ngIf="doctors.length === 0" [ngTemplateOutlet]="loadingDoctors"></ng-container>
+</div>
+
+<!-- This could be extracted into a standalone component or modified in a way to "reuse" the components once the API resolves,
+     especially handy, if the components are hard to create. -->
+<ng-template #loadingDoctors>
+  <app-doctor-card [doctor]="null"></app-doctor-card>
+  <app-doctor-card [doctor]="null"></app-doctor-card>
+  <app-doctor-card [doctor]="null"></app-doctor-card>
+  <app-doctor-card [doctor]="null"></app-doctor-card>
+  <app-doctor-card [doctor]="null"></app-doctor-card>
+  <app-doctor-card [doctor]="null"></app-doctor-card>
+  <app-doctor-card [doctor]="null"></app-doctor-card>
+  <app-doctor-card [doctor]="null"></app-doctor-card>
+  <app-doctor-card [doctor]="null"></app-doctor-card>
+  <app-doctor-card [doctor]="null"></app-doctor-card>
+</ng-template>

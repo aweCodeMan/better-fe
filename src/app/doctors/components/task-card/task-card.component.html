@@ -1,0 +1,12 @@
+<ng-container *ngIf="task">
+  <div class="border border-gray-300 rounded p-3 md:p-5"
+       [ngClass]="{'bg-green-50': task.completed, 'bg-red-50': !task.completed}">
+    <div class="flex flex-row items-center">
+      <div class="mr-3">
+        <input type="checkbox" [checked]="task.completed" disabled>
+      </div>
+
+      {{ task.title }}
+    </div>
+  </div>
+</ng-container>
